@@ -11,9 +11,9 @@ return [
         'database' => 'hademo'
     ],
     'server' => [
-        'name' => 'Yggdrasil Mock Server',
-        'implementation' => 'PHP Yggdrasil Mock',
-        'version' => '1.0.0',
+        'name' => 'HRPAuth',
+        'implementation' => 'HRPAuth zggdrasil-api service',
+        'version' => '0.3.3',
         'links' => [
             'homepage' => 'http://auth.samuelchest.com/',
             'register' => 'http://auth.samuelchest.com/register'
@@ -39,7 +39,7 @@ AQIDAQAB
         'password_cost' => 10
     ],
     'feature_flags' => [
-        'non_email_login' => false,
+        'non_email_login' => true,
         'legacy_skin_api' => true,
         'no_mojang_namespace' => false,
         'enable_mojang_anti_features' => false,

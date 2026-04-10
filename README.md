@@ -1,7 +1,9 @@
-# PHP Yggdrasil API Server
+# PHP Zggdrasil API Server
 
-A PHP implementation of the Yggdrasil API for Minecraft authentication servers.  
-A part of [HRPAuth](https://github.com/HRPAuth/HRPAuth)
+A PHP implementation of the next generation Yggdrasil API for Minecraft authentication servers.  
+A part of [HRPAuth](https://github.com/HRPAuth/HRPAuth).  
+⚠ It is a mock server for testing purposes. And it has been integrated with [HRPAuth](https://github.com/HRPAuth/HRPAuth).  
+This repository has been archived. Please do not use it in production environments.
 
 ## Features
 
@@ -80,7 +82,7 @@ Use these credentials to test the API:
 
 - Email: `user@samuelchest.com`
 - Password: `password123`
-- Username: `PlayerOne`
+- Username: `demoplayer`
 
 ## Testing
 
@@ -98,7 +100,3 @@ curl -X POST http://auth.samuelchest.com/authserver/authenticate \
     }
   }'
 ```
-
-## License
-
-MIT

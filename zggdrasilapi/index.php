@@ -1,6 +1,6 @@
 <?php
 
-// Main entry point for Yggdrasil API Server
+// Main entry point for Zggdrasil API Server
 
 require_once __DIR__ . '/src/utils/helpers.php';
 require_once __DIR__ . '/src/utils/database.php';

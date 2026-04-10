@@ -24,8 +24,18 @@ if (!isset($agent['name']) || !isset($agent['version'])) {
 $db = Database::getInstance();
 
 // Check if user exists
-$stmt = $db->query('SELECT uuid, email, password FROM users WHERE email = ?', [$username]);
-$user = $stmt->fetch();
+$config = require __DIR__ . '/../../config/config.php';
+$nonEmailLogin = $config['feature_flags']['non_email_login'];
+
+if ($nonEmailLogin) {
+    // Try to find user by email or username
+    $stmt = $db->query('SELECT u.uuid, u.email, u.username, u.password FROM users u JOIN profiles p ON u.uuid = p.user_id WHERE u.email = ? OR p.name = ?', [$username, $username]);
+    $user = $stmt->fetch();
+} else {
+    // Only allow email login
+    $stmt = $db->query('SELECT uuid, email, username, password FROM users WHERE email = ?', [$username]);
+    $user = $stmt->fetch();
+}
 
 if (!$user || !verifyPassword($password, $user['password'])) {
     sendErrorResponse('ForbiddenOperationException', 'Invalid credentials.');
@@ -90,6 +100,7 @@ if ($requestUser) {
     $response['user'] = [
         'id' => $user['uuid'],
         'email' => $user['email'],
+        'username' => $user['username'],
         'properties' => $userProperties
     ];
 }
