@@ -6,8 +6,8 @@ return [
     'database' => [
         'host' => 'localhost',
         'port' => 3306,
-        'username' => 'yggdrasil_api',
-        'password' => 'yggdrasil_api',
+        'username' => 'root',
+        'password' => '8d37575eac9a05be',
         'database' => 'yggdrasil_api'
     ],
     'server' => [
@@ -23,8 +23,15 @@ return [
             '.samuelchest.com'
         ],
         'signature_public_key' => '-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
------END PUBLIC KEY-----'
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvtjnFD4Y6x8DBO51XgYI
+wqrxNSL5Sydf6/eeJ7xfSpvk6YNJtbMPdjBiKUugHBbkNWsK06ypcdk2MCnQDosg
+xmqfrFEi/mpakMgMMVALV/ny/49eo4tlJR0f3kvSaAlUDoGT0AjS/2meEXKy1GVj
+9iI28Fphclv7jq1xTw3eCMveZZptCHg/ejgtyBcimdo2mn/HTpT2CYwAhppJAg+b
+XgAitpMveEKN54gPMbmaxpOECsyZ3EujMzHsWjn+HeThwtLkWGoQiRPIzaAsBt1m
+up+koPDK1ADs0EWUBlxvOgVh7WTwQYqcW/xgGTrAACXjR5vaT78tmtilukFdTDMc
+AQIDAQAB
+-----END PUBLIC KEY-----
+'
     ],
     'security' => [
         'token_expiry_days' => 15,
