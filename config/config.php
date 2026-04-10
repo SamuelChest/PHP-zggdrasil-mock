@@ -6,9 +6,9 @@ return [
     'database' => [
         'host' => 'localhost',
         'port' => 3306,
-        'username' => 'root',
-        'password' => '8d37575eac9a05be',
-        'database' => 'yggdrasil_api'
+        'username' => 'hademo',
+        'password' => 'hademo',
+        'database' => 'hademo'
     ],
     'server' => [
         'name' => 'Yggdrasil Mock Server',

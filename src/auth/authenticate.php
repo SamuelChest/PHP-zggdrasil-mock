@@ -24,7 +24,7 @@ if (!isset($agent['name']) || !isset($agent['version'])) {
 $db = Database::getInstance();
 
 // Check if user exists
-$stmt = $db->query('SELECT id, email, password FROM users WHERE email = ?', [$username]);
+$stmt = $db->query('SELECT uuid, email, password FROM users WHERE email = ?', [$username]);
 $user = $stmt->fetch();
 
 if (!$user || !verifyPassword($password, $user['password'])) {
@@ -34,7 +34,7 @@ if (!$user || !verifyPassword($password, $user['password'])) {
 // Get user properties if requested
 $userProperties = [];
 if ($requestUser) {
-    $stmt = $db->query('SELECT name, value, signature FROM user_properties WHERE user_id = ?', [$user['id']]);
+    $stmt = $db->query('SELECT name, value, signature FROM user_properties WHERE user_id = ?', [$user['uuid']]);
     while ($property = $stmt->fetch()) {
         $prop = ['name' => $property['name'], 'value' => $property['value']];
         if ($property['signature']) {
@@ -45,7 +45,7 @@ if ($requestUser) {
 }
 
 // Get user profiles
-$stmt = $db->query('SELECT id, name, model FROM profiles WHERE user_id = ?', [$user['id']]);
+$stmt = $db->query('SELECT id, name, model FROM profiles WHERE user_id = ?', [$user['uuid']]);
 $profiles = [];
 $selectedProfile = null;
 
@@ -74,7 +74,7 @@ $issuedAt = getCurrentTimestamp();
 $config = require __DIR__ . '/../../config/config.php';
 $db->query(
     'INSERT INTO tokens (access_token, client_token, user_id, selected_profile_id, issued_at, expires_in_days, state) VALUES (?, ?, ?, ?, ?, ?, ?)',
-    [$accessToken, $clientToken, $user['id'], $selectedProfile['id'], $issuedAt, $config['security']['token_expiry_days'], 'valid']
+    [$accessToken, $clientToken, $user['uuid'], $selectedProfile['id'], $issuedAt, $config['security']['token_expiry_days'], 'valid']
 );
 
 // Prepare response
@@ -88,7 +88,7 @@ $response = [
 // Add user info if requested
 if ($requestUser) {
     $response['user'] = [
-        'id' => $user['id'],
+        'id' => $user['uuid'],
         'email' => $user['email'],
         'properties' => $userProperties
     ];

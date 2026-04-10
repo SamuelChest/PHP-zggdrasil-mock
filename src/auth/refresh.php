@@ -18,7 +18,7 @@ $selectedProfile = isset($request['selectedProfile']) ? $request['selectedProfil
 $db = Database::getInstance();
 
 // Check if token exists and is valid
-$stmt = $db->query('SELECT t.*, u.id as user_id, u.email FROM tokens t JOIN users u ON t.user_id = u.id WHERE t.access_token = ? AND t.state = ?', [$accessToken, 'valid']);
+$stmt = $db->query('SELECT t.*, u.uuid as user_id, u.email FROM tokens t JOIN users u ON t.user_id = u.uuid WHERE t.access_token = ? AND t.state = ?', [$accessToken, 'valid']);
 $token = $stmt->fetch();
 
 if (!$token) {

@@ -16,7 +16,7 @@ $password = $request['password'];
 $db = Database::getInstance();
 
 // Check if user exists
-$stmt = $db->query('SELECT id, password FROM users WHERE email = ?', [$username]);
+$stmt = $db->query('SELECT uuid, password FROM users WHERE email = ?', [$username]);
 $user = $stmt->fetch();
 
 if (!$user || !verifyPassword($password, $user['password'])) {
@@ -24,7 +24,7 @@ if (!$user || !verifyPassword($password, $user['password'])) {
 }
 
 // Invalidate all tokens for this user
-$db->query('UPDATE tokens SET state = ? WHERE user_id = ?', ['invalid', $user['id']]);
+$db->query('UPDATE tokens SET state = ? WHERE user_id = ?', ['invalid', $user['uuid']]);
 
 // Return 204 No Content
 sendNoContentResponse();
