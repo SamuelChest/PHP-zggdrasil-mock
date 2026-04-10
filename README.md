@@ -1,6 +1,7 @@
 # PHP Yggdrasil API Server
 
-A PHP implementation of the Yggdrasil API for Minecraft authentication servers.
+A PHP implementation of the Yggdrasil API for Minecraft authentication servers.  
+A part of [HRPAuth](https://github.com/HRPAuth/HRPAuth)
 
 ## Features
 
